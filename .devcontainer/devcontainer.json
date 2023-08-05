@@ -1,0 +1,13 @@
+{
+	"name": "YaGPT Shell",
+	"build": {
+		"dockerfile": "Dockerfile.dev"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"golang.go"
+			]
+		}
+	}
+}
