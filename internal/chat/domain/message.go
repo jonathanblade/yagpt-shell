@@ -2,23 +2,25 @@ package domain
 
 import "time"
 
-type RoleType = string
+type Role struct {
+	Name string
+}
 
-const (
-	UserRole      RoleType = "Пользователь"
-	AssistantRole RoleType = "Ассистент"
+var (
+	User      Role = Role{Name: "Пользователь"}
+	Assistant      = Role{Name: "Ассистент"}
 )
 
 type Message struct {
-	Role RoleType
+	Role Role
 	Text string
 	Time time.Time
 }
 
 func NewUserMessage(text string) Message {
-	return Message{Role: UserRole, Text: text, Time: time.Now()}
+	return Message{Role: User, Text: text, Time: time.Now()}
 }
 
 func NewAssistantMessage(text string) Message {
-	return Message{Role: AssistantRole, Text: text, Time: time.Now()}
+	return Message{Role: Assistant, Text: text, Time: time.Now()}
 }

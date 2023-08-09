@@ -62,7 +62,7 @@ func (c *Client) textGenerationFromChatRequest(chatHistory []domain.Message, req
 	url := "https://llm.api.cloud.yandex.net/llm/v1alpha/chat"
 	textGenerationMessages := make([]textGenerationMessage, 0)
 	for _, m := range chatHistory {
-		textGenerationMessages = append(textGenerationMessages, textGenerationMessage{Role: m.Role, Text: m.Text})
+		textGenerationMessages = append(textGenerationMessages, textGenerationMessage{Role: m.Role.Name, Text: m.Text})
 	}
 	bodyBytes, err := json.Marshal(textGenerationFromChatRequest{
 		Model: "general",

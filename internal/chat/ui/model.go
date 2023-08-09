@@ -68,11 +68,11 @@ func (m model) renderMessages() string {
 	for _, message := range m.conversation {
 		var author, spaces string
 		switch message.Role {
-		case domain.UserRole:
+		case domain.User:
 			author = user
 			// hh:mm:ss + You = 11 symbols
 			spaces = strings.Repeat(" ", m.viewport.Width-11)
-		case domain.AssistantRole:
+		case domain.Assistant:
 			author = assistant
 			// hh:mm:ss + YaGPT = 13 symbols
 			spaces = strings.Repeat(" ", m.viewport.Width-13)
