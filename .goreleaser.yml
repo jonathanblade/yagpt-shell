@@ -19,13 +19,15 @@ release:
   name_template: "{{ .ProjectName }} {{ .Tag }} ({{ .Date }})"
 
 archives:
-  - name_template: "yapt-shell-{{ .Tag }}-{{ .Os | tolower }}-{{ .Arch | tolower }}"
-    replacements:
-      amd64: amd64
-      arm64: arm64
-      darwin: macos
-      linux: linux
-      windows: windows
+  - name_template: >-
+      yapt-shell-{{ .Tag }}-
+      {{- if eq .Os "darwin" }}macos
+      {{- else if eq .Os "linux" }}linux
+      {{- else if eq .Os "windows" }}windows
+      {{- else }}{{ .Os }}{{ end }}-
+      {{- if eq .Arch "amd64" }}amd64
+      {{- else if eq .Arch "arm64" }}arm64
+      {{- else }}{{ .Arch }}{{ end }}
     format: tar.gz
     format_overrides:
       - goos: windows
