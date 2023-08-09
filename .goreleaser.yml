@@ -1,0 +1,38 @@
+project_name: yagpt-shell
+
+builds:
+  - binary: yagpt
+    env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X github.com/jonathanblade/yagpt-shell/main.Version={{ .Tag }}
+
+archives:
+  - id: yagpt-shell
+    name_template: {{ .ProjectName }}-{{ .Tag }}-{{ .Os | tolower }}-{{ .Arch | tolower }}
+    replacements:
+      amd64: amd64
+      arm64: arm64
+      darwin: macos
+      linux: linux
+      windows: windows
+    format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - LICENSE.txt
+
+changelog:
+  skip: true
+
+checksum:
+  name_template: "checksums.txt"
