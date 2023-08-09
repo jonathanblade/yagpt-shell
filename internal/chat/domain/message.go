@@ -2,13 +2,15 @@ package domain
 
 import "time"
 
+type RoleType = string
+
 const (
-	UserRole      = "Пользователь"
-	AssistantRole = "Ассистент"
+	UserRole      RoleType = "Пользователь"
+	AssistantRole RoleType = "Ассистент"
 )
 
 type Message struct {
-	Role string
+	Role RoleType
 	Text string
 	Time time.Time
 }
