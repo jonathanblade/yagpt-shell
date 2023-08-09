@@ -1,4 +1,4 @@
-project_name: yagpt-shell
+project_name: "YaGPT Shell"
 
 builds:
   - binary: yagpt
@@ -15,9 +15,11 @@ builds:
     ldflags:
       - -s -w -X github.com/jonathanblade/yagpt-shell/main.Version={{ .Tag }}
 
+release:
+  name_template: "{{ .ProjectName }} {{ .Tag }} ({{ .Date }})"
+
 archives:
-  - id: yagpt-shell
-    name_template: {{ .ProjectName }}-{{ .Tag }}-{{ .Os | tolower }}-{{ .Arch | tolower }}
+  - name_template: "yapt-shell-{{ .Tag }}-{{ .Os | tolower }}-{{ .Arch | tolower }}"
     replacements:
       amd64: amd64
       arm64: arm64
