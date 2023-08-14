@@ -16,6 +16,7 @@ const ConfigName = ".yagpt-shell"
 type Config struct {
 	ApiKey      string  `mapstructure:"API_KEY"`
 	FolderID    string  `mapstructure:"FOLDER_ID"`
+	Instruction string  `mapstructure:"INSTRUCTION"`
 	Temperature float64 `mapstructure:"TEMPERATURE"`
 }
 
@@ -51,6 +52,10 @@ func (c *Config) Show() {
 	folder_id := style.AccentTextStyle.Render("Folder ID: ")
 	folder_id += lipgloss.NewStyle().PaddingLeft(2).Render(c.FolderID)
 	text.WriteString(folder_id + "\n\n")
+
+	instruction := style.AccentTextStyle.Render("Instruction: ")
+	instruction += c.Instruction
+	text.WriteString(instruction + "\n\n")
 
 	temperature := style.AccentTextStyle.Render("Temperature: ")
 	temperature += strconv.FormatFloat(c.Temperature, 'f', -1, 64)

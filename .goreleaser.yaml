@@ -37,6 +37,7 @@ archives:
       - goos: windows
         format: zip
     files:
+      - .yagpt-shell
       - LICENSE.txt
 
 changelog:

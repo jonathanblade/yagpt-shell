@@ -40,7 +40,7 @@ func (c *Client) textGenerationFromInstructionRequest(requestText string) *http.
 			Temperature:    c.config.Temperature,
 			MaxTokens:      2000,
 		},
-		InstructionText: "",
+		InstructionText: c.config.Instruction,
 		RequestText:     requestText,
 	})
 	if err != nil {
@@ -71,7 +71,7 @@ func (c *Client) textGenerationFromChatRequest(chatHistory []domain.Message, req
 			Temperature:    c.config.Temperature,
 			MaxTokens:      2000,
 		},
-		InstructionText: "",
+		InstructionText: c.config.Instruction,
 		Messages:        textGenerationMessages,
 	})
 	if err != nil {
