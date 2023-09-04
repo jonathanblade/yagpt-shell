@@ -25,25 +25,25 @@ type textGenerationFromChatResponse struct {
 }
 
 type textGenerationFromChatResult struct {
-	NumTokens int                   `json:"numTokens"`
+	NumTokens int64                 `json:"numTokens"`
 	Message   textGenerationMessage `json:"message"`
 }
 
 type textGenerationFromInstructionResult struct {
-	NumPromptTokens int                         `json:"numPromptTokens"`
+	NumPromptTokens int64                       `json:"numPromptTokens"`
 	Alternatives    []textGenerationAlternative `json:"alternatives"`
 }
 
 type textGenerationAlternative struct {
 	Text      string  `json:"text"`
 	Score     float64 `json:"score"`
-	NumTokens int     `json:"numTokens"`
+	NumTokens int64   `json:"numTokens"`
 }
 
 type textGenerationOptions struct {
 	PartialResults bool    `json:"partialResults"`
 	Temperature    float64 `json:"temperature"`
-	MaxTokens      int     `json:"maxTokens"`
+	MaxTokens      int64   `json:"maxTokens"`
 }
 
 type textGenerationMessage struct {

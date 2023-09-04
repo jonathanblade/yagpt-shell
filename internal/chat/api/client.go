@@ -38,7 +38,7 @@ func (c *Client) textGenerationFromInstructionRequest(requestText string) *http.
 		GenerationOptions: textGenerationOptions{
 			PartialResults: false,
 			Temperature:    c.config.Temperature,
-			MaxTokens:      2000,
+			MaxTokens:      c.config.MaxTokens,
 		},
 		InstructionText: c.config.Instruction,
 		RequestText:     requestText,
@@ -69,7 +69,7 @@ func (c *Client) textGenerationFromChatRequest(chatHistory []domain.Message, req
 		GenerationOptions: textGenerationOptions{
 			PartialResults: false,
 			Temperature:    c.config.Temperature,
-			MaxTokens:      2000,
+			MaxTokens:      c.config.MaxTokens,
 		},
 		InstructionText: c.config.Instruction,
 		Messages:        textGenerationMessages,

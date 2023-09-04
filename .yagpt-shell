@@ -2,3 +2,4 @@ API_KEY=api_key
 FOLDER_ID=folder_id
 INSTRUCTION=Ты - искусственный интеллект, который прибыл с другой планеты.
 TEMPERATURE=0.7
+MAX_TOKENS=7400

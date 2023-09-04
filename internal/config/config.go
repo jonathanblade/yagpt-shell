@@ -18,6 +18,7 @@ type Config struct {
 	FolderID    string  `mapstructure:"FOLDER_ID"`
 	Instruction string  `mapstructure:"INSTRUCTION"`
 	Temperature float64 `mapstructure:"TEMPERATURE"`
+	MaxTokens   int64   `mapstructure:"MAX_TOKENS"`
 }
 
 func Read() *Config {
@@ -39,6 +40,9 @@ func Read() *Config {
 	if conf.Temperature < 0 || conf.Temperature > 1 {
 		log.Fatalf("Failed to read %s. Make sure you set correct TEMPERATURE (min = 0, max = 1).", ConfigName)
 	}
+	if conf.MaxTokens < 0 || conf.MaxTokens > 7400 {
+		log.Fatalf("Failed to read %s. Make sure you set correct MAX_TOKENS (min = 0, max = 7400).", ConfigName)
+	}
 	return &conf
 }
 
@@ -59,7 +63,11 @@ func (c *Config) Show() {
 
 	temperature := style.AccentTextStyle.Render("Temperature: ")
 	temperature += strconv.FormatFloat(c.Temperature, 'f', -1, 64)
-	text.WriteString(temperature + "\n")
+	text.WriteString(temperature + "\n\n")
+
+	max_tokens := style.AccentTextStyle.Render("Max tokens: ")
+	max_tokens += lipgloss.NewStyle().PaddingLeft(1).Render(strconv.FormatInt(c.MaxTokens, 10))
+	text.WriteString(max_tokens + "\n")
 
 	fmt.Println(style.BorderStyle.Render(text.String()))
 }
