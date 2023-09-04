@@ -24,7 +24,7 @@ release:
 
 archives:
   - name_template: >-
-      yapt-shell-{{ .Tag }}-
+      yagpt-shell-{{ .Tag }}-
       {{- if eq .Os "darwin" }}macos
       {{- else if eq .Os "linux" }}linux
       {{- else if eq .Os "windows" }}windows
